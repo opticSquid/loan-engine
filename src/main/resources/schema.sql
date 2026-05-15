@@ -16,8 +16,9 @@ CREATE TABLE IF NOT EXISTS loan_accounts (
     CONSTRAINT chk_rate CHECK (annual_interest_rate > 0)
 );
 
-CREATE INDEX IF NOT EXISTS idx_loan_status         ON loan_accounts(status);
-CREATE INDEX IF NOT EXISTS idx_loan_accrual_date   ON loan_accounts(last_accrual_date);
+-- :INFO: As we are using MariaDB it does not support IF NOT EXISTS on indexes so subsequent runs error out. Thats why after first run I commented out the index creation statements. this index commands
+-- CREATE INDEX IF NOT EXISTS idx_loan_status         ON loan_accounts(status);
+-- CREATE INDEX IF NOT EXISTS idx_loan_accrual_date   ON loan_accounts(last_accrual_date);
 
 CREATE TABLE IF NOT EXISTS accrual_ledger (
     id                      CHAR(36)        NOT NULL PRIMARY KEY DEFAULT (UUID()),
@@ -33,4 +34,4 @@ CREATE TABLE IF NOT EXISTS accrual_ledger (
     CONSTRAINT uq_accrual_loan_date UNIQUE (loan_id, accrual_date)
 );
 
-CREATE INDEX idx_accrual_ledger_loan_id ON accrual_ledger(loan_id);
+-- CREATE INDEX idx_accrual_ledger_loan_id ON accrual_ledger(loan_id);
