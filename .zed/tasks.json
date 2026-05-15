@@ -1,0 +1,8 @@
+[
+  {
+    "label": "Run Spring Boot",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "command": "./gradlew bootRun",
+    "allow_concurrent_runs": false,
+  },
+]

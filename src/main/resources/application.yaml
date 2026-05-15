@@ -1,3 +1,11 @@
 spring:
   application:
     name: loan-engine
+  r2dbc:
+    url: r2dbc:mariadb://localhost:3306/loanengine
+    username: root
+    password: Abc123
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
